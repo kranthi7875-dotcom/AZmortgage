@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AZmortgage</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body data-page="index">
+  <div class="page">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logoMark" aria-label="AZmortgage logo">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3l9-8z"/>
+          </svg>
+        </div>
+        <p class="brandName">AZmortgage</p>
+      </div>
+    </div>
+
+    <div class="titleWrap">
+      <h1 class="pageTitle">Mortgage Calculator</h1>
+      <p class="pageSub">Enter values and press Submit to see monthly payment. Use Monthly Breakdown to open the next page.</p>
+    </div>
+
+    <div class="grid">
+      <!-- LEFT: Inputs -->
+      <section class="card">
+        <div class="pad">
+
+          <div class="field">
+            <label for="loanAmount">
+              Loan Amount ($)
+              <span class="tip" data-tip="Enter the loan amount (example: 300000).">
+                <span class="tipBtn">i</span>
+              </span>
+            </label>
+            <input type="number" id="loanAmount" min="1" step="1" placeholder="e.g., 300000">
+          </div>
+
+          <div class="field">
+            <label for="interestRate">
+              Interest Rate (%)
+              <span class="tip" data-tip="Enter annual interest rate (example: 6.75).">
+                <span class="tipBtn">i</span>
+              </span>
+            </label>
+            <input type="number" id="interestRate" min="0" step="0.01" placeholder="e.g., 6.75">
+          </div>
+
+          <div class="field">
+            <label for="termYears">
+              Loan Term (Years)
+              <span class="tip" data-tip="Select a term OR type custom years below. Custom overrides dropdown.">
+                <span class="tipBtn">i</span>
+              </span>
+            </label>
+
+            <select id="termYears">
+              <option value="" selected>Select term (optional)</option>
+              <option value="10">10 years</option>
+              <option value="15">15 years</option>
+              <option value="20">20 years</option>
+              <option value="25">25 years</option>
+              <option value="30">30 years</option>
+              <option value="40">40 years</option>
+            </select>
+
+            <div class="hint">Or type custom term (years):</div>
+            <input type="number" id="termCustom" min="1" step="1" placeholder="e.g., 12">
+          </div>
+
+          <div class="actions3">
+            <button type="button" class="btn btnPrimary" id="submitBtn">Submit</button>
+            <button type="button" class="btn btnGhost" id="clearBtn">Clear</button>
+            <button type="button" class="btn btnAccent" id="breakdownBtn">Monthly Breakdown</button>
+          </div>
+
+          <div class="hint">Values stay after refresh. Clear removes saved values.</div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Results -->
+      <section class="card">
+        <div class="rightHeader">
+          <div class="rightHeaderTop">
+            <div>
+              <h2 class="rightTitle">Results</h2>
+              <p class="rightSub">Submit shows monthly payment (Principal + Interest).</p>
+            </div>
+
+            <div class="miniStat">
+              <div class="k">Principal + Interest</div>
+              <div class="v" id="miniPI">$0.00 /mo</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pad">
+          <div class="emptyState">
+            Click <b>Submit</b> to see monthly payment. Click <b>Monthly Breakdown</b> to open the next page (chart + amortization).
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+ <script src="./app.js"></script>
+</body>
+</html>

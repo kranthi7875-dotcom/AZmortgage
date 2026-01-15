@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AZmortgage - Breakdown</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body data-page="breakdown">
+  <div class="page">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logoMark" aria-label="AZmortgage logo">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3l9-8z"/>
+          </svg>
+        </div>
+        <p class="brandName">AZmortgage</p>
+      </div>
+
+      <button class="backBtn" type="button" onclick="window.location.href='./index.html'">← Back</button>
+    </div>
+
+    <div class="titleWrap">
+      <h1 class="pageTitle">Mortgage Calculator</h1>
+      <p class="pageSub">Payment breakdown and amortization table (first 12 months).</p>
+    </div>
+
+    <section class="card">
+      <!-- Tabs -->
+      <div class="tabsLine">
+        <button class="tab active" id="tabBreakdown" type="button">Payment breakdown</button>
+        <button class="tab" id="tabAmort" type="button">Amortization</button>
+      </div>
+
+      <!-- Breakdown Panel -->
+      <div class="panel show" id="panelBreakdown">
+        <div class="pad">
+          <div class="breakdownGrid">
+            <!-- Donut -->
+            <div class="chartCard">
+              <div style="font-size:13px;font-weight:950;">Monthly payment breakdown</div>
+              <div style="margin-top:4px;color:var(--muted);font-size:12.5px;">Principal vs Interest (Month 1)</div>
+
+              <div class="donutWrap">
+                <svg width="190" height="190" viewBox="0 0 190 190">
+                  <circle cx="95" cy="95" r="62" fill="none" stroke="var(--ring)" stroke-width="18"></circle>
+
+                  <circle id="arcPrincipal" class="donutArc"
+                    cx="95" cy="95" r="62" fill="none" stroke="var(--c-principal)" stroke-width="18"
+                    stroke-linecap="round" transform="rotate(-90 95 95)"
+                    stroke-dasharray="0 999" stroke-dashoffset="0"></circle>
+
+                  <circle id="arcInterest" class="donutArc"
+                    cx="95" cy="95" r="62" fill="none" stroke="var(--c-interest)" stroke-width="18"
+                    stroke-linecap="round" transform="rotate(-90 95 95)"
+                    stroke-dasharray="0 999" stroke-dashoffset="0"></circle>
+
+                  <text x="95" y="90" text-anchor="middle" font-size="13" fill="#64748b" font-weight="800">P&I</text>
+                  <text id="donutPI" x="95" y="114" text-anchor="middle" font-size="18" fill="#0f172a" font-weight="950">$0.00/mo</text>
+                </svg>
+              </div>
+
+              <div class="legend">
+                <div class="legendRow">
+                  <div class="legendLeft"><span class="swatch" style="background:var(--c-principal)"></span>Principal</div>
+                  <div class="valStrong" id="pctPrincipal">0%</div>
+                </div>
+                <div class="legendRow">
+                  <div class="legendLeft"><span class="swatch" style="background:var(--c-interest)"></span>Interest</div>
+                  <div class="valStrong" id="pctInterest">0%</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Values -->
+            <div class="kvList">
+              <div class="kvRow">
+                <div class="kvKey"><span class="swatch" style="background:var(--c-principal)"></span>Month 1 Principal</div>
+                <div class="kvVal" id="valPrincipal">$0.00</div>
+              </div>
+              <div class="kvRow">
+                <div class="kvKey"><span class="swatch" style="background:var(--c-interest)"></span>Month 1 Interest</div>
+                <div class="kvVal" id="valInterest">$0.00</div>
+              </div>
+              <div class="kvRow" style="background:#fbffff;">
+                <div class="kvKey" style="color:#0f172a;"><b>Monthly P&I</b></div>
+                <div class="kvVal" id="valMonthlyPI"><b>$0.00</b></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Amortization Panel -->
+      <div class="panel" id="panelAmort">
+        <div class="pad">
+          <div class="tableWrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th class="right">Payment (P&I)</th>
+                  <th class="right">Principal</th>
+                  <th class="right">Interest</th>
+                  <th class="right">Balance</th>
+                </tr>
+              </thead>
+              <tbody id="amortBody"></tbody>
+            </table>
+          </div>
+          <p class="hint">Showing first 12 months only.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
